@@ -114,6 +114,8 @@
         .search-bar button:hover {
             background-color: #45a049;
         }
+
+        
        /*
         .playlist ul {
             list-style-type: none;
@@ -147,6 +149,7 @@
 <nav>
     <a href="#">Home</a>
     <a href="account.php">My Account</a>
+    <a href="favourite-artists.php">My Favorite Artists</a>
     <a href="#">Playlist</a>
     <a href="bought.php">My Purchased Tracks</a>
 </nav>
@@ -199,8 +202,34 @@
         </form>
     </div>
 
-    
+<div class="container">
+        <div class="section search-bar">
+            <h2>Add Your Favorite Artists</h2>
+            <form action="add-favourite-artist.php" method="POST">
+                <label for="artistID">Select an Artist:</label>
+                <select name="artistID" id="artistID" required>
+                    <?php
+                    require_once('DBconnect.php');
+                    $sql = "SELECT artistID, name FROM artist";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $artistID = htmlspecialchars($row['artistID'], ENT_QUOTES, 'UTF-8');
+                            $artistName = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
+                            echo "<option value='$artistID'>$artistName</option>";
+                        }
+                    } else {
+                        echo "<option value=''>No artists available</option>";
+                    }
+                    ?>
+                </select>
+                <br><br>
+                <button type="submit">Add to Favorites</button>
+            </form>
+        </div>
+    </div>   
 </div>
 
 </body>
 </html>
+
