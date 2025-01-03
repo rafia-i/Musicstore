@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $date = date('Y-m-d');
                 $totalPrice = 0;
                 $boughtTracks=[];
-                $quantity = count($trackIDs);
+                //$quantity = count($trackIDs);
                 
 
                 foreach ($trackIDs as $trackID) {                    
@@ -49,12 +49,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 $price = $Row['price'];
                                 $artistID = $Row['artistID'];
                                 //$totalPrice += $price;
-                                $insertSQL = "INSERT INTO invoice (invoiceID, artistID, customerID, trackID, genreID, date, quantity, totalprice, paymentmethod) 
-                                              VALUES ('', $artistID, $ID, $trackID, $genreID, '$date', $quantity, $price, '$paymentMethod')";
+                                //inserting into invoice table
+                                $insertSQL = "INSERT INTO invoice (invoiceID, artistID, customerID, trackID, genreID, date, totalprice, paymentmethod) 
+                                              VALUES ('', $artistID, $ID, $trackID, $genreID, '$date',  $price, '$paymentMethod')";
                                 mysqli_query($conn, $insertSQL);
                                 //removing from cart because purchasing
                                 $removesql="DELETE FROM CART where trackID=$trackID and customerID=$ID";
                                 mysqli_query($conn, $removesql);
+
+                                //NAFEE-updating points
+                                $pointsql="UPDATE customer SET points=$price/10 WHERE ID=$ID";
+                                $pointsrun=mysqli_query($conn, $pointsql);
                             }
 
                             
@@ -168,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             
                             <p><strong>Date:</strong> $date</p>
                             <p><strong>Payment Method:</strong> $paymentMethod</p>
-                            <p><strong>Quantity:</strong> $quantity tracks</p>
+                            
                         </div>
 
                         <div class='tracks-list'>

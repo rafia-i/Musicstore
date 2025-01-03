@@ -5,7 +5,7 @@ if (isset($_SESSION['ID'])) {
 }
 require_once('DBconnect.php');
 
-$sql = "SELECT a.name AS artist_name, t.name AS track_name, t.trackID, a.artistID FROM tracks t INNER JOIN artist a ON t.artistID = a.artistID INNER JOIN favourites f ON a.artistID = f.artistID WHERE f.customerID = $ID";
+$sql = "SELECT a.name AS artist_name, t.name AS track_name, t.trackID, a.artistID FROM tracks t INNER JOIN artist a ON t.artistID = a.artistID INNER JOIN favourites f ON a.artistID = f.artistID WHERE f.customerID = $ID and t.composed_date<=NOW()";
 $result = mysqli_query($conn, $sql);
 ?>
 
