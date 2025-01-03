@@ -1,7 +1,10 @@
 <?php
+session_start();
+if (isset($_SESSION['ID'])) {
+    $ID = $_SESSION['ID'];
+}
 require_once('DBconnect.php');
 
-// Fetch total users from the user table
 $userQuery = "SELECT COUNT(*) AS total_users FROM customer";
 $userResult = mysqli_query($conn, $userQuery);
 $totalUsers = 0;
@@ -10,7 +13,6 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     $totalUsers = $userRow['total_users'];
 }
 
-// Fetch total songs from the song table
 $songQuery = "SELECT COUNT(*) AS total_songs FROM tracks";
 $songResult = mysqli_query($conn, $songQuery);
 $totalSongs = 0;
@@ -19,13 +21,19 @@ if ($songResult && mysqli_num_rows($songResult) > 0) {
     $totalSongs = $songRow['total_songs'];
 }
 
-// Fetch total revenue from the invoice table
 $revenueQuery = "SELECT SUM(totalprice) AS total_revenue FROM invoice";
 $revenueResult = mysqli_query($conn, $revenueQuery);
 $totalRevenue = 0;
 if ($revenueResult && mysqli_num_rows($revenueResult) > 0) {
     $revenueRow = mysqli_fetch_assoc($revenueResult);
     $totalRevenue = $revenueRow['total_revenue'];
+}
+
+$adminQuery = "SELECT * FROM admin WHERE ID=$ID"; 
+$adminResult = mysqli_query($conn, $adminQuery);
+$adminDetails = null;
+if ($adminResult && mysqli_num_rows($adminResult) > 0) {
+    $adminDetails = mysqli_fetch_assoc($adminResult);
 }
 ?>
 
@@ -160,19 +168,49 @@ if ($revenueResult && mysqli_num_rows($revenueResult) > 0) {
     </header>
 
     <nav>
-        <a href="#Account">Account Details</a>
+        <a href="#Account">Home</a>
     </nav>
 
     <div class="container">
+        <section id="account-details" class="section">
+            <h2>Account Details</h2>
+            <?php if ($adminDetails): ?>
+                <table class="transactions">
+                    <tr>
+                        <th>Field</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Admin ID</td>
+                        <td><?php echo htmlspecialchars($adminDetails['ID']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td><?php echo htmlspecialchars($adminDetails['name']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><?php echo htmlspecialchars($adminDetails['email']); ?></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td><?php echo htmlspecialchars($adminDetails['phone']); ?></td>
+                    </tr>
+                </table>
+            <?php else: ?>
+                <p>Unable to retrieve admin details. Please Contact with your Engineers.</p>
+            <?php endif; ?>
+        </section>
+
         <section class="overview">
-        <h2>Overview</h2>
-        <p>Welcome back, Admin! Here are some quick stats:</p>
+            <h2>Overview</h2>
+            <p>Welcome back, Admin! Here are some quick stats:</p>
             <div class="card">
-            <ul>
-                <li>Total Users: <strong><?php echo $totalUsers;?></strong></li>
-                <li>Total Songs in Tracks: <strong><?php echo $totalSongs; ?></strong></li>
-                <li>Total Revenue: <strong><?php echo number_format($totalRevenue, 2); ?></strong></li>
-            </ul>
+                <ul>
+                    <li>Total Users: <strong><?php echo $totalUsers; ?></strong></li>
+                    <li>Total Songs in Tracks: <strong><?php echo $totalSongs; ?></strong></li>
+                    <li>Total Revenue: <strong><?php echo number_format($totalRevenue, 2); ?></strong></li>
+                </ul>
             </div>
         </section>
 
@@ -186,8 +224,6 @@ if ($revenueResult && mysqli_num_rows($revenueResult) > 0) {
                     <a href="All.php">All</a>
                 </div>
             </div>
-
-            
         </section>
 
         <section id="manage-users" class="section">
@@ -196,12 +232,8 @@ if ($revenueResult && mysqli_num_rows($revenueResult) > 0) {
             <form method="POST" action="user_report.php">
                 <button type="submit" name="user_activity_report">Download User Activity Report</button>
             </form>
-
         </section>
 
-
-        
-        
 <section id="reports" class="section">
     <h2>View Reports of Customers</h2>
     <form method="GET" action="">
@@ -221,8 +253,9 @@ if ($revenueResult && mysqli_num_rows($revenueResult) > 0) {
             $sql = "SELECT * FROM report WHERE type = 'Bug'";
         } elseif ($reportType === "Violation") {
             $sql = "SELECT * FROM report WHERE type = 'Violation'";
-        }
+        }else {
         $sql = "SELECT * FROM report ORDER BY submitted_at DESC";
+        }
 
         $result = mysqli_query($conn, $sql);
 
@@ -254,6 +287,7 @@ if ($revenueResult && mysqli_num_rows($revenueResult) > 0) {
     ?>
 </section>
 
+        
 
         <section id="settings" class="section">
             <h2>Settings</h2>
