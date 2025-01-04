@@ -77,7 +77,7 @@ require_once('DBconnect.php');
 
 
 //is cart empty or not
-$sql="SELECT t.name, t.trackID, T.artistID, t.price from tracks t join cart c on t.trackID=c.trackID where c.customerID=$ID";
+$sql="SELECT t.name, t.trackID, t.artistID, t.price from tracks t join cart c on t.trackID=c.trackID where c.customerID=$ID";
 $result=mysqli_query($conn,$sql);
 
 

@@ -51,7 +51,8 @@
 require_once('DBconnect.php');
 if(isset($_POST['search_term'])) {
     $u=$_POST['search_term'];
-    $sql="SELECT t.name, t.link, t.trackID from tracks t join genre g on g.genreid=t.genreid where g.name='$u' order by t.name";
+    $sql="SELECT t.name, t.link, t.trackID from tracks t join genre g on g.genreid=t.genreid 
+    where g.name='$u' and t.composed_date<=NOW() order by t.name";
     $result =mysqli_query($conn,$sql);
     
     

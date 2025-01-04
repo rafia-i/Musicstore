@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (isset($_SESSION['ID'])) {
+   $ID = $_SESSION['ID'];
+}
 require_once('DBconnect.php');
 $u = ""; 
 
