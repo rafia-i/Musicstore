@@ -5,7 +5,10 @@ if (isset($_SESSION['ID'])) {
 }
 require_once('DBconnect.php');
 
+
 $sql = "SELECT t.trackID, t.name, t.audio_path, IFNULL(AVG(r.rating), 10) AS average_rating FROM tracks t JOIN invoice i ON i.trackID = t.trackID JOIN customer c ON i.customerID = c.ID LEFT JOIN ratings r ON r.trackID = t.trackID WHERE c.ID = $ID GROUP BY t.trackID ORDER BY t.name";
+
+
 $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -115,6 +118,29 @@ $result = mysqli_query($conn, $sql);
             display: flex;
             flex-direction: row;
             align-items: right;
+            flex-direction: column;
+        }
+        .audio-comment {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .audio-player {
+            height: 30px; 
+            margin-right: 10px;
+        }
+        .comment-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: -40px;
+            margin-right: 140px;
+        }
+        .comment-form {
+            display: flex;
+            flex-direction: row;
+            align-items: bottom;
             gap: 10px;
         }
         .comment-form textarea {
@@ -123,6 +149,7 @@ $result = mysqli_query($conn, $sql);
         }
         .comment-button {
             background-color: #4CAF50;
+            background-color: #4CAF50; 
             color: white;
             padding: 5px 10px;
             font-size: 14px;
@@ -159,6 +186,7 @@ $result = mysqli_query($conn, $sql);
         .back-button:hover {
             background-color: #45a049;
         }
+
     </style>
 </head>
 <body>
@@ -173,6 +201,9 @@ $result = mysqli_query($conn, $sql);
                     echo "<li>";
                     echo "<div class='track-info'>";
                     echo "<h3>" . htmlspecialchars($row['name']) . "</h3>";
+                    echo "<div class='audio-comment'>";
+                    echo "<div>";
+                    echo "<span>" . htmlspecialchars($row['name']) . "</span><br><br>";
                     echo "<span> 🎶 </span>";
                     echo "<audio class='audio-player' controls>
                             <source src='" . htmlspecialchars($row['audio_path']) . "' type='audio/mpeg'>
@@ -208,7 +239,15 @@ $result = mysqli_query($conn, $sql);
                     echo "</form>";
                     echo "<a class='view-comments' href='comment.php?trackID=" . $row['trackID'] . "'>View Comments</a>";
                     echo "</div>";
+                  
                     echo "</div>";
+                  
+                    echo "</div>";
+
+                    echo "<div class='comment-section'>";
+                    echo "<a class='view-comments' href='comment.php?trackID=" . $row['trackID'] . "'>View Comments</a>";
+                    echo "</div>";
+
                     echo "</li>";
                 }
             } else {
@@ -230,6 +269,7 @@ $result = mysqli_query($conn, $sql);
         });
     });
 
+
     function showRatingForm(formId) {
         document.querySelectorAll('.rating-form').forEach(form => {
             form.style.display = 'none';
@@ -241,6 +281,11 @@ $result = mysqli_query($conn, $sql);
     <div class="btn-container">
         <form action="home.php" method="POST">
             <button class="back-button" type="submit">Back to home</button>
+    </script>
+
+    <div class='btn-container'>
+        <form action='home.php' method='POST'>
+            <button class='back-button' type='submit'>Back to home</button>
         </form>
     </div>
 
