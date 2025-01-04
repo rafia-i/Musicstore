@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (isset($_SESSION['ID'])) {
+   $ID = $_SESSION['ID'];
+}
 require_once('DBconnect.php');
 
 
@@ -16,7 +20,8 @@ if (isset($_POST['trackID']) && isset($_POST['password'])) {
         }
 
 
-    $sql2 = "INSERT INTO playlist VALUES('','$trackID','$customer_id')";
+
+    $sql2 = "INSERT INTO playlist VALUES('','$trackID','$ID')";
     $result2 = mysqli_query($conn, $sql2);
 
     if (mysqli_affected_rows($conn)) {

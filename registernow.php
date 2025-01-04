@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('DBConnect.php');
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['phone_number'])  && isset($_POST['area']) && isset($_POST['district']) && isset($_POST['country']) && isset($_POST['birthdate'])){
@@ -23,6 +24,10 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_affected_rows($conn) > 0){
+
+        //
+        $customer_id = mysqli_insert_id($conn);
+        $_SESSION['ID'] = $customer_id;
 
         
         

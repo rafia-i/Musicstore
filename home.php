@@ -346,8 +346,7 @@ nav a {
     <a href="viewcart.php">View my cart </a>
     <a href="bought.php">My Purchased Tracks </a>
     <a href="#">My Playlist </a>
-    <a href="past-invoices.php">My Orders </a>
-    
+    <a href="past-invoices.php">My Orders </a>    
     <a href="logout.php" class="logout">Logout<span class="emoji">⛔</span></a>
 </nav>
 
@@ -435,6 +434,17 @@ nav a {
             </form>
         </div>
     </div>   
+
+</div>
+<!--YAKUB-->
+<div class="container">
+    <div class="section popular-list">
+        <h2>🔥 Don't miss out on the trending artists and their chart-topping tracks. Click below to explore now!</h2>
+        <form action="popular-artists.php" method="GET">
+            <button type="submit">Discover Popular Artists</button>
+        </form>
+    </div>
+
 </div>
 <!--YAKUB-->
 <div class="container">
@@ -445,6 +455,42 @@ nav a {
         </form>
     </div>
 </div>
+
+<div class="container">
+    <div class="section popular-list">
+        <h2>Top Hits You Can't Ignore – Check Them Out Now! 🎧</h2>
+        <form action="popular-tracks.php" method="GET">
+            <button type="submit">View Most Popular Tracks</button>
+        </form>
+    </div>
+</div>
+
+<!--SHREYA-->
+
+<!-- Floating Report Button -->
+<button class="report-btn" onclick="showModal()">Report</button>
+
+
+<!-- Modal Box -->
+<div class="modal" id="reportModal">
+    <button class="modal-close" onclick="hideModal()">X</button>
+    <h2>Report Issue</h2>
+    <form action="submit_report.php" method="POST">
+        <label><input type="radio" name="report_type" value="Bug"> Bug</label><br>
+        <label><input type="radio" name="report_type" value="Violation"> Violation</label><br>
+        <textarea name="report_description" rows="4" cols="30" placeholder="Describe the issue..." required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<script>
+    function showModal() {
+        document.getElementById('reportModal').style.display = 'block';
+    }
+
+    function hideModal() {
+        document.getElementById('reportModal').style.display = 'none';
+    }
+</script>
 
 <div class="container">
     <div class="section popular-list">

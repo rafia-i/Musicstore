@@ -5,9 +5,58 @@ if (isset($_SESSION['ID'])) {
    $ID = $_SESSION['ID'];
 }
 
-
 //echo "User ID: " . $ID;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Track</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 300;
+            padding: 20px;
+            height: 100vh;
+            
+    margin: 20px; /* or any other appropriate value */
 
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+        .viewcart-btn {
+    background-color:rgb(10, 125, 44); /* Primary color */
+    color: #fff; /* White text */
+    border: none; /* Remove borders */
+    padding: 10px 20px; /* Button padding */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.viewcart-btn:hover {
+    background-color:rgb(6, 82, 29); /* Darker shade on hover */
+}
+
+
+
+    </style>
+
+    </head>
+<body>
+<div class="container">
+<?php 
 require_once('DBconnect.php');
 $u = ""; 
 
@@ -27,11 +76,19 @@ if (isset($_POST['trackID'])) {
 
     if ($row['count'] > 0) {  
             //checking cart     
-            echo"Track is already added to cart";
+            echo"Track is already added to cart ";
+            echo"<br><br>";
+            echo"<form action='viewcart.php' method='post'>
+        <button type='submit' class='viewcart-btn'>View your cart</button>
+    </form>";
 
     } else if($roww['count'] > 0){
         //check if already bought
-        echo"You already bought this track :)";
+        echo"You already bought this track :) ";
+        echo"<br><br>";
+        echo"<form action='bought.php' method='post'>
+        <button type='submit' class='viewcart-btn'>View your purchased tracks</button>
+    </form>";
 
     }
     else{
@@ -41,8 +98,13 @@ if (isset($_POST['trackID'])) {
         $result2 = mysqli_query($conn, $sql);
 
         if (mysqli_affected_rows($conn)>0) {
-            echo "Congratulations!This track is successfully added to your cart!";
-            echo '<p><a href="viewcart.php">View your cart</a></p>';
+            echo "Congratulations!This track is successfully added to your cart! ";
+            echo"<br><br>";
+            echo"<form action='viewcart.php' method='post'>
+        <button type='submit' class='viewcart-btn'>View your cart</button>
+    </form>";
+    
+           
 
         } else {
             echo "<p>Failed to add song to cart.</p>";
@@ -52,5 +114,8 @@ if (isset($_POST['trackID'])) {
 }   
 
 ?>
+</div>
+</body>
+</html>
 
 
