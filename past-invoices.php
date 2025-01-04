@@ -25,11 +25,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     $invoices[$invoiceID]['tracks'][] = $row['track_name'] . " by " . $row['artist_name'];
 }
 
-// Close the connection
 mysqli_free_result($result);
 mysqli_close($conn);
 
-// Render the HTML
 ?>
 <!DOCTYPE html>
 <html lang='en'>
