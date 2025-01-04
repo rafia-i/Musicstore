@@ -13,7 +13,7 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $b = $_POST['birthdate'];
 
 
-    $sql="INSERT INTO customer VALUES ('','$u','$p','$a','$d','$c','$ph','$e','$b')";
+    $sql="INSERT INTO customer VALUES ('','$u','$p','$a','$d','$c','$ph','$e','$b',0)";
 
    
 
