@@ -9,9 +9,7 @@ if (isset($_SESSION['ID']) && isset($_POST['trackID']) && isset($_POST['comment'
     $comment = $_POST['comment'];
 
     if (!empty($comment)) {
-        $sql = "INSERT INTO comment (trackID, customerID, comment, date) 
-                VALUES ($trackID, $customerID, '$comment', NOW())";
-                
+        $sql = "INSERT INTO comment (trackID, customerID, comment, date) VALUES ($trackID, $customerID, '$comment', NOW())";
         if (mysqli_query($conn, $sql)) {
             header("Location: bought.php");
             exit();
