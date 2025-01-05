@@ -197,27 +197,7 @@ require_once('DBconnect.php');
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        /*
-        nav {
-             display: flex;  
-            
-             justify-content: space-around; 
-             padding: 10px;
-             background-color: #f4f4f4;  
-}
-nav a {
-    display: inline-block;
-    padding: 20px 40px;  
-    text-decoration: none;
-    color: white;
-    background-color:rgb(17, 123, 45); 
-    border-radius: 5px; 
-    font-family: Arial, sans-serif; 
-    font-size: 1rem; 
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;  
-}*/
-/* Floating Report Button */
+
 .report-btn {
             position: fixed;
             bottom: 20px;
@@ -289,20 +269,7 @@ nav a {
 
 
         
-       /*
-        .playlist ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .playlist ul li {
-            padding: 0.8rem;
-            background-color: #f9f9f9;
-            margin-bottom: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-       */ 
+    
     </style>
 </head>
 
@@ -346,8 +313,7 @@ nav a {
     <a href="viewcart.php">View my cart </a>
     <a href="bought.php">My Purchased Tracks </a>
     <a href="#">My Playlist </a>
-    <a href="past-invoices.php">My Orders </a>
-    
+    <a href="past-invoices.php">My Orders </a>    
     <a href="logout.php" class="logout">Logout<span class="emoji">⛔</span></a>
 </nav>
 
@@ -435,6 +401,7 @@ nav a {
             </form>
         </div>
     </div>   
+
 </div>
 <!--YAKUB-->
 <div class="container">
@@ -454,6 +421,35 @@ nav a {
         </form>
     </div>
 </div>
+
+<!--SHREYA-->
+
+<!-- Floating Report Button -->
+<button class="report-btn" onclick="showModal()">Report</button>
+
+
+<!-- Modal Box -->
+<div class="modal" id="reportModal">
+    <button class="modal-close" onclick="hideModal()">X</button>
+    <h2>Report Issue</h2>
+    <form action="submit_report.php" method="POST">
+        <label><input type="radio" name="report_type" value="Bug"> Bug</label><br>
+        <label><input type="radio" name="report_type" value="Violation"> Violation</label><br>
+        <textarea name="report_description" rows="4" cols="30" placeholder="Describe the issue..." required></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<script>
+    function showModal() {
+        document.getElementById('reportModal').style.display = 'block';
+    }
+
+    function hideModal() {
+        document.getElementById('reportModal').style.display = 'none';
+    }
+</script>
+
+
 
 <!--SHREYA-->
 

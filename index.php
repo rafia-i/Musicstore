@@ -193,7 +193,7 @@
 
         <div id="admin-form" class="login-form">
             <h2>Admin Login</h2>
-            <form action="submit-admin-login.php" method="POST">
+            <form action="submit-login-admin.php" method="POST">
                 <label for="admin-id">Admin ID</label>
                 <input type="text" id="admin-id" name="adminID" placeholder="Enter admin ID" required>
 

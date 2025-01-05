@@ -64,6 +64,9 @@ $result = mysqli_query($conn, $sql);
             background-color: #45a049;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
         }
+        .add-to-cart-btn:hover {
+            background-color: #45a049;
+        }
         .remove-artist-btn {
             background-color: #f44336;
         }
@@ -89,6 +92,7 @@ $result = mysqli_query($conn, $sql);
         }
         .back-button:hover {
             background-color: #45a049;
+            background-color: #d32f2f;
         }
     </style>
 </head>
@@ -136,6 +140,7 @@ $result = mysqli_query($conn, $sql);
     <?php else: ?>
         <p>You have no favorite artists yet!</p>
     <?php endif; ?>
+                  
     <div class="btn-container">
         <form action="home.php" method="POST">
             <button class="back-button" type="submit">Back to home</button>
