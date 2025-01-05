@@ -13,7 +13,8 @@ if ($conn->connect_error) {
 // Fetch tracks added in the last month
 $sql = "SELECT trackID, name, price, composed_date
         FROM tracks 
-        WHERE composed_date >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)";
+        WHERE composed_date BETWEEN DATE_FORMAT(CURDATE() - INTERVAL 1 MONTH, '%Y-%m-01') 
+                                AND CURDATE()";
 
 $result = $conn->query($sql);
 $recentTracks = [];

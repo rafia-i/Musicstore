@@ -140,7 +140,7 @@ if(isset($_POST['search_term'])) {
         echo "</ul>";
 
     } else {
-        echo "Sorry, we seem to have bo song in this genre.";
+        echo "Sorry, we seem to have no song in this genre.";
     }
 }
 ?>
