@@ -105,10 +105,21 @@ $conn->close();
             <input type="text" id="name" name="name" required>
 
             <label for="mediatype">Media Type:</label>
-            <input type="text" id="mediatype" name="mediatype" required>
+            <select id="type" name="type" required>
+                <option value="MP3">MP3</option>
+                <option value="WAV">WAV</option>
+                <option value="3GP">3GP</option>
+            </select><br><br>
 
             <label for="genreID">Genre ID:</label>
-            <input type="number" id="genreID" name="genreID" required>
+            <select id="genreID" name="genreID" required>
+                <option value="1">Pop</option>
+                <option value="2">Rock</option>
+                <option value="3">r&b</option>
+                <option value="4">Country</option>
+                <option value="5">Jazz</option>
+                <option value="6">Classical</option>
+            </select><br><br>
 
             <label for="artistID">Artist ID:</label>
             <input type="number" id="artistID" name="artistID" required>
