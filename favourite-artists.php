@@ -5,7 +5,7 @@ if (isset($_SESSION['ID'])) {
 }
 require_once('DBconnect.php');
 
-$sql = "SELECT a.name AS artist_name, t.name AS track_name, t.trackID, a.artistID FROM tracks t INNER JOIN artist a ON t.artistID = a.artistID INNER JOIN favourites f ON a.artistID = f.artistID WHERE f.customerID = $ID and t.composed_date<=NOW()";
+$sql = "SELECT a.name AS artist_name, t.name AS track_name, t.trackID, t.price AS trackPrice, a.artistID FROM tracks t INNER JOIN artist a ON t.artistID = a.artistID INNER JOIN favourites f ON a.artistID = f.artistID WHERE f.customerID = $ID and t.composed_date<=NOW()";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -107,6 +107,7 @@ $result = mysqli_query($conn, $sql);
             $artistName = htmlspecialchars($row['artist_name'], ENT_QUOTES, 'UTF-8');
             $trackName = htmlspecialchars($row['track_name'], ENT_QUOTES, 'UTF-8');
             $trackID = htmlspecialchars($row['trackID'], ENT_QUOTES, 'UTF-8');
+            $trackPrice = htmlspecialchars($row['trackPrice'], ENT_QUOTES, 'UTF-8');
             $artistID = htmlspecialchars($row['artistID'], ENT_QUOTES, 'UTF-8');
 
             if ($artistName !== $currentArtist):
@@ -128,7 +129,7 @@ $result = mysqli_query($conn, $sql);
             <?php endif; ?>
 
             <li>
-                <?= $trackName ?>
+                <?= $trackName ?> - BDT <?= $trackPrice ?>
                 <form action="cart.php" method="POST" style="display: inline;">
                     <input type="hidden" name="trackID" value="<?= $trackID ?>">
                     <button type="submit" class="add-to-cart-btn">Add to Cart</button>
