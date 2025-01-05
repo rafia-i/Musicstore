@@ -17,10 +17,10 @@ while ($row = mysqli_fetch_assoc($result)) {
         $invoices[$invoiceID] = [
             'date' => $row['date'],
             'paymentMethod' => $row['paymentmethod'],
-            'Price' => $row['price'],
+            'Price' => $row['totalprice'],
             'tracks' => []
         ];
-        $totalPrice += $row['price'];
+        $totalPrice += $row['totalprice'];
     }
     $invoices[$invoiceID]['tracks'][] = $row['track_name'] . " by " . $row['artist_name'];
 }
