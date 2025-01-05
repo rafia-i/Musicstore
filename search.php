@@ -90,6 +90,26 @@
         .search-results {
             margin-top: 20px;
         }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #45a049;
+            background-color: #d32f2f;
+
+        }
     </style>
 </head>
 <body>
@@ -135,6 +155,13 @@ if(isset($_POST['search_term'])) {
     }
 }
 ?>
+
+<div class="btn-container">
+        <form action="home.php" method="POST">
+            <button class="back-button" type="submit">Back to home</button>
+        </form>
+</div>
+
 
 </div>
 </body>
