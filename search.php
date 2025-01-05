@@ -142,10 +142,10 @@ if(isset($_POST['search_term'])) {
                     <button type='submit'>Add to your playlist</button>
                   </form>";
 
-            echo "<form action='cart.php' method='POST'>
-                    <input type='hidden' name='trackID' value='$trackID'>
-                    <button type='submit'>Add to cart</button>
-                  </form>";
+            //echo "<form action='cart.php' method='POST'>
+            //        <input type='hidden' name='trackID' value='$trackID'>
+            //        <button type='submit'>Add to cart</button>
+            //      </form>";
             echo "</li><br>";
         }
 

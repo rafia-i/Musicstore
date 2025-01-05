@@ -89,12 +89,12 @@ if(isset($_POST['search_term'])) {
 
             //add to playlist
 
-            echo "<form action='confirming.php' method='POST'>
-            <input type='hidden' name='trackID' value='$trackID'>
-            <button type='submit'>Add to your playlist</button>
-            </form>";
+            //echo "<form action='confirming.php' method='POST'>
+            //<input type='hidden' name='trackID' value='$trackID'>
+            //<button type='submit'>Add to your playlist</button>
+            //</form>";
 
-            echo "<br>";
+            //echo "<br>";
 
             //add to cart
             echo "<form action='cart.php' method='POST'>

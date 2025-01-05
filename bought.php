@@ -177,6 +177,12 @@ $result = mysqli_query($conn, $sql);
                     echo "<audio class='audio-player' controls>
                             <source src='" . htmlspecialchars($row['audio_path']) . "' type='audio/mpeg'>
                           </audio>";
+                          echo "<form action='confirming.php' method='POST'>
+            <input type='hidden' name='trackID' value='" . $row['trackID'] . "'>
+            <button type='submit'>Add to your playlist</button>
+            </form>";
+
+            echo "<br>";
                     echo "</div>";
 
                     echo "<div class='rating-comment-container'>";
