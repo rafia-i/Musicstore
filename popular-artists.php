@@ -90,7 +90,7 @@ $result = mysqli_query($conn, $sql);
             $artistID = htmlspecialchars($row['artistID'], ENT_QUOTES, 'UTF-8');
             $artistName = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
             $popularity = $row['popularity'];
-            $sqlTracks = "SELECT trackID, name AS track_name FROM tracks WHERE artistID = $artistID";
+            $sqlTracks = "SELECT trackID, name AS track_name, price FROM tracks WHERE artistID = $artistID";
             $resultTracks = mysqli_query($conn, $sqlTracks);
             ?>
             <div class="artist-section">
@@ -108,9 +108,10 @@ $result = mysqli_query($conn, $sql);
                             <?php
                             $trackID = htmlspecialchars($track['trackID'], ENT_QUOTES, 'UTF-8');
                             $trackName = htmlspecialchars($track['track_name'], ENT_QUOTES, 'UTF-8');
+                            $trackPrice = htmlspecialchars($track['price'], ENT_QUOTES, 'UTF-8');
                             ?>
                             <li class="track-item">
-                                <?= $trackName ?>
+                                <?= $trackName ?> - BDT <?= $trackPrice ?>
                                 <form action="cart.php" method="POST">
                                     <input type="hidden" name="trackID" value="<?= $trackID ?>">
                                     <button type="submit" class="add-to-cart-btn">Add to Cart</button>

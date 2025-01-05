@@ -1,7 +1,7 @@
 <?php
 require_once('DBconnect.php');
 
-$sql = "SELECT i.trackID, t.name AS track_name, a.name AS artist_name, COUNT(i.trackID) AS purchase_count FROM invoice i INNER JOIN artist a ON i.artistID = a.artistID INNER JOIN tracks t ON t.trackID = i.trackID GROUP BY t.trackID HAVING purchase_count > 0 ORDER BY purchase_count DESC;";
+$sql = "SELECT i.trackID, t.name AS track_name, t.price AS trackPrice, a.name AS artist_name, COUNT(i.trackID) AS purchase_count FROM invoice i INNER JOIN artist a ON i.artistID = a.artistID INNER JOIN tracks t ON t.trackID = i.trackID GROUP BY t.trackID HAVING purchase_count > 0 ORDER BY purchase_count DESC;";
 $result = mysqli_query($conn, $sql)
 ?>
 
@@ -69,7 +69,7 @@ $result = mysqli_query($conn, $sql)
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<li>";
-                    echo "<span><strong>" . $row['track_name'] . "</strong> by " . $row['artist_name'] . " (Purchased: " . $row['purchase_count'] . " times)</span>";
+                    echo "<span><strong>" . $row['track_name'] . "</strong> by " . $row['artist_name'] . " - BDT " . $row['trackPrice'] . " (Purchased: " . $row['purchase_count'] . " times)</span>";
                     ?>
                     <form action="cart.php" method="post">
                         <input type="hidden" name="trackID" value="<?php echo $row['trackID']; ?>">
