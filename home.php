@@ -459,7 +459,7 @@ require_once('DBconnect.php');
 
 <div class="container">
         <div class="section search-bar">
-            <h2>One click away from discoveing your favourite artists & songs! 🎶</h2>
+            <h2>One click away from discovering your favourite artists & songs! 🎶</h2>
             <form action="add-favourite-artist.php" method="POST">
                 <label for="artistID">Select an Artist:</label>
                 <select name="artistID" id="artistID" required>
