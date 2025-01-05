@@ -10,11 +10,14 @@ if (isset($_POST['trackID']) && isset($_POST['password'])) {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $sql3 = "SELECT * FROM playlist WHERE trackID = '$trackID' AND customerID = '$ID'";
     $result3 = mysqli_query($conn, $sql3);
+    echo '<form action="home.php" method="POST"><button type="submit">Back to Home</button></form><br>';
+
+
 
     if ($result3 && mysqli_num_rows($result3) == 0) {
-            // Insert track into playlist
-            $sql2 = "INSERT INTO playlist (trackID, customerID) VALUES ('$trackID', '$ID')";
+            $sql2 = "INSERT INTO playlist VALUES ('','$trackID', '$ID')";
             $result2 = mysqli_query($conn, $sql2);
+
 
             if ($result2) {
                 echo "<script>alert('Congratulations! This track has been successfully added to your playlist.');</script>";
@@ -27,4 +30,5 @@ if (isset($_POST['trackID']) && isset($_POST['password'])) {
 } else {
         echo "<p>Invalid password. Please try again.</p>";
 }
+
 ?>

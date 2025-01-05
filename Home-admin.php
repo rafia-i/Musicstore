@@ -172,6 +172,7 @@ if ($adminResult && mysqli_num_rows($adminResult) > 0) {
         <a href="addTracks.php">Add Tracks</a>
         <a href="addArtist.php">Add Artist</a>
         <a href="updatePrice.php">Update Price</a>
+        <a href="logout.php" class="logout">Logout<span class="emoji">⛔</span></a>
     </nav>
 
     <div class="container">
@@ -230,11 +231,8 @@ if ($adminResult && mysqli_num_rows($adminResult) > 0) {
         </section>
 
         <section id="manage-users" class="section">
-            <h2>Manage Users</h2>
-            <p>View, edit, or remove users from the platform. <a href="manage-users.php">Go to User Management</a></p>
-            <form method="POST" action="user_report.php">
-                <button type="submit" name="user_activity_report">Download User Activity Report</button>
-            </form>
+            <h2>View customer</h2>
+            <p>View customer details. <a href="manage-users.php">Go</a></p>
         </section>
 
 <section id="reports" class="section">
@@ -342,13 +340,6 @@ if ($adminResult && mysqli_num_rows($adminResult) > 0) {
     
     ?>
 </section>
-
-        
-
-        <section id="settings" class="section">
-            <h2>Settings</h2>
-            <p>Update admin account settings, configure platform preferences, and more. <a href="settings.php">Go to Settings</a></p>
-        </section>
     </div>
 
     <footer>
