@@ -38,7 +38,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
         //echo"customer id: $ID";
         header("Location:home.php");
-        }
+       }
     }else{
         echo"Wrong username or password";
     }
