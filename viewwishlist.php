@@ -65,7 +65,7 @@ require_once('DBconnect.php');
         display: flex;
         flex-direction: column;
     }
-
+/*
     button {
         background-color: #4CAF50;
         color: white;
@@ -79,7 +79,7 @@ require_once('DBconnect.php');
 
     button:hover {
         background-color: #45a049;
-    }
+    }*/
 
     .wishlist-empty {
         text-align: center;
@@ -100,7 +100,26 @@ require_once('DBconnect.php');
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+    .btn-container {
+            text-align: center;
+            margin-top: 20px;
+                            
+        }
+        .back-button {
+        background-color:#f4f4f4;
+        color: green;
+        padding: 5px 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        
+        }
+        .back-button:hover {
+        background-color:#f4f4f4;
+        }
         
     
     .Delete button {
@@ -200,7 +219,7 @@ if (mysqli_num_rows($result) != 0) {
     }else {
         echo "Your wishlist is empty :(";
     }
-
+    
 //delete
 if (isset($_POST['delete'])) {
     if (isset($_POST['trackID'])) {
@@ -218,6 +237,9 @@ if (isset($_POST['delete'])) {
     
 }
 ?>
-
+<div class='btn-container'>
+    <form action='home.php' method='POST'>
+    <button class='back-button' type='submit'>Back to home</button>
+    </form></div>
 </body>
 </html>

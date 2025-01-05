@@ -90,6 +90,11 @@ require_once('DBconnect.php');
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+    .btn-container {
+            text-align: center;
+            margin-top: 20px;
+                            
+        }
 
     
     </style>
@@ -97,7 +102,7 @@ require_once('DBconnect.php');
 <body>
     
         <?php
-        //filteriong upcoming tracks of favourite artists of ID customer
+        //upcoming tracks 
         $sql="SELECT t.trackID, t.name as track_name, t.composed_date, a.name as artist_name from tracks t join artist a on t.artistId=a.artistID join favourites f on a.artistID=f.artistID 
         where f.customerID= $ID and t.composed_date>Now() order by t.composed_date asc";
 
@@ -154,6 +159,11 @@ require_once('DBconnect.php');
             }
             echo "</ul>";
             echo"</div>";
+
+           echo" <div class='btn-container'>
+    <form action='home.php' method='POST'>
+    <button class='back-button' type='submit'>Back to home</button>
+    </form></div>";
             echo"<footer>Tracks added to your wishlist will automatically transfer to your cart after being released :)</footer>";
         }
         
