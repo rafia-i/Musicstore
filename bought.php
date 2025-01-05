@@ -159,6 +159,22 @@ $result = mysqli_query($conn, $sql);
         .back-button:hover {
             background-color: #45a049;
         }
+        .report-section {
+            margin-top: 15px;
+        }
+        .report-button {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .report-button:hover {
+            background-color: #e04343;
+        }
+
     </style>
 </head>
 <body>
@@ -214,6 +230,15 @@ $result = mysqli_query($conn, $sql);
                     echo "</form>";
                     echo "<a class='view-comments' href='comment.php?trackID=" . $row['trackID'] . "'>View Comments</a>";
                     echo "</div>";
+                    // Report Button Section
+                    echo "<div class='report-section'>";
+                    echo "<form class='report-form' action='submit_report.php' method='POST'>";
+                    echo "<input type='hidden' name='trackID' value='" . $row['trackID'] . "'>";
+                    echo "<textarea name='Report' placeholder='Description...' required></textarea>";
+                    echo "<button type='submit' class='report-button'>Report Track</button>";
+                    echo "</form>";
+                    echo "</div>";
+
                     echo "</div>";
                     echo "</li>";
                 }

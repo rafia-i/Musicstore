@@ -169,6 +169,9 @@ if ($adminResult && mysqli_num_rows($adminResult) > 0) {
 
     <nav>
         <a href="#Account">Home</a>
+        <a href="addTracks.php">Add Tracks</a>
+        <a href="addArtist.php">Add Artist</a>
+        <a href="updatePrice.php">Update Price</a>
     </nav>
 
     <div class="container">
@@ -247,28 +250,34 @@ if ($adminResult && mysqli_num_rows($adminResult) > 0) {
     </form>
 
     <?php
+    $result1 = false;
+    $result2 = false;
+    $result3 = false;
     if (isset($_GET['report_type'])) {
         $reportType = $_GET['report_type'];
         if ($reportType === "Bug") {
             $sql = "SELECT * FROM report WHERE type = 'Bug'";
+            $result1 = mysqli_query($conn, $sql);
         } elseif ($reportType === "Violation") {
-            $sql = "SELECT * FROM report WHERE type = 'Violation'";
+            $sql = "SELECT * FROM report WHERE type = 'Inappropriate_content'";
+            $result2 = mysqli_query($conn, $sql);
         }else {
         $sql = "SELECT * FROM report ORDER BY submitted_at DESC";
+        $result3 = mysqli_query($conn, $sql);
         }
 
-        $result = mysqli_query($conn, $sql);
+        
 
-        if ($result && mysqli_num_rows($result) > 0) {
+        if ($result1 && mysqli_num_rows($result1) > 0) {
             echo "<table class='transactions'>";
             echo "<tr>
                     <th>Report ID</th>
                     <th>User ID</th>
                     <th>Report Type</th>
                     <th>Description</th>
-                    <th>Timestamp</th>
+                    <th>Date</th>
                   </tr>";
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result1)) {
                 echo "<tr>
                         <td>" . htmlspecialchars($row['report_id']) . "</td>
                         <td>" . htmlspecialchars($row['user_id']) . "</td>
@@ -276,14 +285,61 @@ if ($adminResult && mysqli_num_rows($adminResult) > 0) {
                         <td>" . htmlspecialchars($row['description']) . "</td>
                         <td>" . htmlspecialchars($row['submitted_at']) . "</td>
                       </tr>";
+        
+            }
+            echo "</table>";
+        
+        } elseif ($result2 && mysqli_num_rows($result2) > 0) {
+            echo "<table class='transactions'>";
+            echo "<tr>
+                    <th>Report ID</th>
+                    <th>User ID</th>
+                    <th>Report Type</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Track_id</th>
+
+                  </tr>";
+            while ($row = mysqli_fetch_assoc($result2)) {
+                echo "<tr>
+                        <td>" . htmlspecialchars($row['report_id']) . "</td>
+                        <td>" . htmlspecialchars($row['user_id']) . "</td>
+                        <td>" . htmlspecialchars($row['type']) . "</td>
+                        <td>" . htmlspecialchars($row['description']) . "</td>
+                        <td>" . htmlspecialchars($row['submitted_at']) . "</td>
+                        <td>" . htmlspecialchars($row['track_id']) . "</td>
+                      </tr>";
+        
+            }
+            echo "</table>";
+        } elseif ($result3 && mysqli_num_rows($result3) > 0) {
+            echo "<table class='transactions'>";
+            echo "<tr>
+                    <th>Report ID</th>
+                    <th>User ID</th>
+                    <th>Report Type</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                  </tr>";
+            while ($row = mysqli_fetch_assoc($result3)) {
+                echo "<tr>
+                        <td>" . htmlspecialchars($row['report_id']) . "</td>
+                        <td>" . htmlspecialchars($row['user_id']) . "</td>
+                        <td>" . htmlspecialchars($row['type']) . "</td>
+                        <td>" . htmlspecialchars($row['description']) . "</td>
+                        <td>" . htmlspecialchars($row['submitted_at']) . "</td>
+                      </tr>";
+        
             }
             echo "</table>";
         } else {
             echo "<p>No reports found for the selected type.</p>";
         }
+        
     } else {
         echo "<p>Select a report type to view reports.</p>";
     }
+    
     ?>
 </section>
 

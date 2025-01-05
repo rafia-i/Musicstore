@@ -433,8 +433,7 @@ require_once('DBconnect.php');
     <button class="modal-close" onclick="hideModal()">X</button>
     <h2>Report Issue</h2>
     <form action="submit_report.php" method="POST">
-        <label><input type="radio" name="report_type" value="Bug"> Bug</label><br>
-        <label><input type="radio" name="report_type" value="Violation"> Violation</label><br>
+        <label><input type="radio" name="report" value="Bug"> Bug</label><br>
         <textarea name="report_description" rows="4" cols="30" placeholder="Describe the issue..." required></textarea><br>
         <button type="submit">Submit</button>
     </form>
@@ -477,6 +476,7 @@ require_once('DBconnect.php');
         document.getElementById('reportModal').style.display = 'none';
     }
 </script>
+
 
 </body>
 </html>

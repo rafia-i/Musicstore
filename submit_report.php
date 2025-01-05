@@ -1,33 +1,38 @@
 <?php
 session_start();
 
-// Check if session ID is set
 if (isset($_SESSION['ID'])) {
     $ID = $_SESSION['ID'];
-    //echo "Session ID: $ID"; // Debugging output
+
 }
-
-
 require_once('DBConnect.php');
-if (isset($_POST['report_type'])) {
-    $report = $_POST['report_type'];
-    $currentDateTime = date('Y-m-d H:i:s'); // Correct datetime format
+if (isset($_POST['report'])) {
+    $report = $_POST['report'];
+    $currentDateTime = date('Y-m-d H:i:s'); 
     $description = mysqli_real_escape_string($conn, $_POST['report_description']);
 
     if ($report == "Bug") {
-        $sql = "INSERT INTO report VALUES ('', $ID, '$description', '$currentDateTime', 'Bug')";
+        $sql = "INSERT INTO report VALUES ('', $ID, '$description', '$currentDateTime', 'Bug',NUll)";
         if (mysqli_query($conn, $sql)) {
             echo "Bug report submitted successfully!";
         } else {
             echo "Error: " . mysqli_error($conn);
         }
-    } elseif ($report == "Violation") {
-        $sql = "INSERT INTO report VALUES ('', $ID, '$description', '$currentDateTime', 'Violation')";
+    }
+}
+if (isset($_POST['trackID'])) {
+    $track_id=$_POST['trackID'];
+    $currentDateTime = date('Y-m-d H:i:s'); 
+    $description = mysqli_real_escape_string($conn, $_POST['Report']);
+    $sql = "INSERT INTO report VALUES ('', $ID, '$description', '$currentDateTime', 'Inappropriate_content',$track_id)";
         if (mysqli_query($conn, $sql)) {
-            echo "Violation report submitted successfully!";
+            echo "Report submitted successfully!";
         } else {
             echo "Error: " . mysqli_error($conn);
         }
-    }
+
+
 }
+
+
 ?>

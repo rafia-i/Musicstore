@@ -1,34 +1,30 @@
 <?php
 session_start();
 if (isset($_SESSION['ID'])) {
-   $ID = $_SESSION['ID'];
+    $ID = $_SESSION['ID'];
 }
 require_once('DBconnect.php');
 
-
 if (isset($_POST['trackID']) && isset($_POST['password'])) {
-    $trackID = $_POST['trackID'];
-    $password = $_POST['password'];
-    $sql1="SELECT ID FROM customer where password like'%$password%'";
-    $result1=mysqli_query($conn,$sql1);
-    if (mysqli_num_rows($result1) != 0) {
-        echo '<form action="home.php" method="POST"><button type="submit">Back to Home</button></form><br>';
+    $trackID = mysqli_real_escape_string($conn, $_POST['trackID']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $sql3 = "SELECT * FROM playlist WHERE trackID = '$trackID' AND customerID = '$ID'";
+    $result3 = mysqli_query($conn, $sql3);
 
-        while ($row = mysqli_fetch_assoc($result1)) {
-            $customer_id = htmlspecialchars($row['ID'], ENT_QUOTES, 'UTF-8');
+    if ($result3 && mysqli_num_rows($result3) == 0) {
+            // Insert track into playlist
+            $sql2 = "INSERT INTO playlist (trackID, customerID) VALUES ('$trackID', '$ID')";
+            $result2 = mysqli_query($conn, $sql2);
 
-        }
-
-
-
-    $sql2 = "INSERT INTO playlist VALUES('','$trackID','$ID')";
-    $result2 = mysqli_query($conn, $sql2);
-
-    if (mysqli_affected_rows($conn)) {
-        echo " <script>alert('Congratulations!This track is successfully added to your playlist');</script>";
+            if ($result2) {
+                echo "<script>alert('Congratulations! This track has been successfully added to your playlist.');</script>";
+            } else {
+                echo "<p>Failed to add the song to the playlist. Please try again later.</p>";
+            }
     } else {
-            echo "<p>Failed to add song to playlist.</p>";
-    }
-    }
+            echo "<p>This track is already in your playlist.</p>";
+        }
+} else {
+        echo "<p>Invalid password. Please try again.</p>";
 }
 ?>

@@ -107,8 +107,7 @@
         }
         .back-button:hover {
             background-color: #45a049;
-            background-color: #d32f2f;
-
+            
         }
     </style>
 </head>
@@ -123,29 +122,32 @@
 <?php
 require_once('DBconnect.php');
 if(isset($_POST['search_term'])) {
-    $u=$_POST['search_term'];
-    $sql="SELECT name, link, trackID FROM tracks WHERE name LIKE '%$u%' ORDER BY name";
-    $result=mysqli_query($conn, $sql);
+    $u = $_POST['search_term'];
+
+    $sql = "SELECT t.name AS trackName, t.link AS trackLink, t.trackID AS trackID, a.name AS artistName FROM tracks t JOIN artist a ON t.artistID = a.artistID WHERE t.name LIKE '%$u%' ORDER BY t.name";
+    $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) != 0) {
         echo "<ul class='search-results'>"; 
 
         while ($row = mysqli_fetch_assoc($result)) {
-            $trackName = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
-            $ytLink = htmlspecialchars($row['link'], ENT_QUOTES, 'UTF-8');
+            $trackName = htmlspecialchars($row['trackName'], ENT_QUOTES, 'UTF-8');
+            $artistName = htmlspecialchars($row['artistName'], ENT_QUOTES, 'UTF-8');
+            $ytLink = htmlspecialchars($row['trackLink'], ENT_QUOTES, 'UTF-8');
             $trackID = htmlspecialchars($row['trackID'], ENT_QUOTES, 'UTF-8');
+            
             echo "<li>";
-            echo "$trackName - <a href='$ytLink' target='_blank'>Watch preview</a><br>";
+            echo "<h3> $trackName by $artistName - <a href='$ytLink' target='_blank'>Watch preview</a><br> </h3>";
 
-            echo "<form action='confirming.php' method='POST'>
+           /// echo "<form action='confirming.php' method='POST'>
+              ///      <input type='hidden' name='trackID' value='$trackID'>
+               ///     <button type='submit'>Add to your playlist</button>
+              ///  </form>";
+
+            echo "<form action='cart.php' method='POST'>
                     <input type='hidden' name='trackID' value='$trackID'>
-                    <button type='submit'>Add to your playlist</button>
-                  </form>";
-
-            //echo "<form action='cart.php' method='POST'>
-            //        <input type='hidden' name='trackID' value='$trackID'>
-            //        <button type='submit'>Add to cart</button>
-            //      </form>";
+                    <button type='submit'>Add to cart</button>
+                </form>";
             echo "</li><br>";
         }
 
@@ -161,7 +163,6 @@ if(isset($_POST['search_term'])) {
             <button class="back-button" type="submit">Back to home</button>
         </form>
 </div>
-
 
 </div>
 </body>
