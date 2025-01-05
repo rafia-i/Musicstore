@@ -70,7 +70,7 @@
 require_once('DBconnect.php');
 if(isset($_POST['search_term'])) {
     $u=$_POST['search_term'];
-    $sql="SELECT t.name, t.link, t.trackID, a.name as artistName from tracks t join genre g on g.genreid=t.genreid
+    $sql="SELECT t.name, t.link, t.trackID, t.price, a.name as artistName from tracks t join genre g on g.genreid=t.genreid
     join artist a on t.artistID=a.artistID 
     where g.name='$u' and t.composed_date<=NOW() order by t.name";
     $result =mysqli_query($conn,$sql);
@@ -86,7 +86,8 @@ if(isset($_POST['search_term'])) {
             $artistName = htmlspecialchars($row['artistName'], ENT_QUOTES, 'UTF-8');
             $ytLink = htmlspecialchars($row['link'], ENT_QUOTES, 'UTF-8');
             $trackID = htmlspecialchars($row['trackID'], ENT_QUOTES, 'UTF-8');
-            echo "<li><b>$trackName</b> -by $artistName - <a href='$ytLink' target='_blank'>Watch preview</a></li>";
+            $price = htmlspecialchars($row['price'], ENT_QUOTES, 'UTF-8');
+            echo "<li><b>$trackName</b> -by $artistName ($price tk) <br><br>- <a href='$ytLink' target='_blank'>Watch preview</a></li>";
             echo"<br>";
 
             //add to playlist
