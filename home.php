@@ -441,13 +441,13 @@ require_once('DBconnect.php');
         
             <label>R&B</label>
             <input type="radio" name="search_term" value="r&b">
-           <br>
+           <br><br>
 
             <label>Country</label>
             <input type="radio" name="search_term" value="country">
         
-            <label>Jazz</label>
-            <input type="radio" name="search_term" value="jazz">
+            <!--<label>Jazz</label>
+            <input type="radio" name="search_term" value="jazz">-->
         
             <label>Classical</label>
             <input type="radio" name="search_term" value="classical">

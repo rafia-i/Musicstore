@@ -35,6 +35,17 @@
             text-align: center;
             color:  #f4f4f4;
         }
+        a {
+        color:rgb(25, 210, 118);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        }
+
+        a:hover {
+        color:rgb(13, 161, 67);
+        text-decoration: underline;
+        }
         .btn-container {
             text-align: center;
             margin-top: 20px;
@@ -54,6 +65,24 @@
         .back-button:hover {
         background-color: #45a049; 
         }
+
+        button {
+        background-color:rgb(22, 154, 112);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+
+       button:hover {
+       background-color:rgb(6, 120, 21);
+      }
+
+     
+
        
     </style>
 </head>
@@ -87,7 +116,7 @@ if(isset($_POST['search_term'])) {
             $ytLink = htmlspecialchars($row['link'], ENT_QUOTES, 'UTF-8');
             $trackID = htmlspecialchars($row['trackID'], ENT_QUOTES, 'UTF-8');
             $price = htmlspecialchars($row['price'], ENT_QUOTES, 'UTF-8');
-            echo "<li><b>$trackName</b> -by $artistName ($price tk) <br><br>- <a href='$ytLink' target='_blank'>Watch preview</a></li>";
+            echo "<li><b>$trackName</b> -by $artistName (BDT $price ) <br><br> <a href='$ytLink' target='_blank'>Watch preview</a></li>";
             echo"<br>";
 
             //add to playlist
