@@ -313,7 +313,7 @@ require_once('DBconnect.php');
     <a href="viewcart.php">View my cart </a>
     <a href="bought.php">My Purchased Tracks </a>
     <a href="#">My Playlist </a>
-    <a href="past-invoices.php">My Orders </a>    
+    <a href="past-invoices.php">My Orders </a>   
     <a href="logout.php" class="logout">Logout<span class="emoji">⛔</span></a>
 </nav>
 
@@ -480,4 +480,3 @@ require_once('DBconnect.php');
 
 </body>
 </html>
-
