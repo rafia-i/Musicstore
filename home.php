@@ -383,7 +383,7 @@ require_once('DBconnect.php');
     <a href="viewwishlist.php">My Wishlist </a>
     <a href="viewcart.php">View my cart </a>    
     <a href="bought.php">My Purchased Tracks </a>
-    <a href="#">My Playlist </a>
+    <!--<a href="#">My Playlist </a>-->
     <a href="past-invoices.php">My Orders </a>  
     <a href="updateCustomer.php">Change Info </a>   
     <a href="logout.php" class="logout">Logout<span class="emoji">⛔</span></a>
