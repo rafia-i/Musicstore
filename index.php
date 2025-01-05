@@ -230,7 +230,8 @@
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone_number" placeholder="Enter your phone number" required>
+                <input type="tel" name="phone" pattern="[0-9]{11}" title="Enter a 11-digit phone number" required>
+
 
                 <label for="area">Area</label>
                 <input type="text" id="area" name="area" placeholder="Enter your area" required>

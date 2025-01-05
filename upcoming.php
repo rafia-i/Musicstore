@@ -108,7 +108,13 @@ require_once('DBconnect.php');
 
         $result=mysqli_query($conn,$sql);
         if (mysqli_num_rows($result) == 0) {
+            echo"<div class='container'>";
             echo"Sorry, no upcoming releases have been listed of your favourite artists :(";
+            echo"</div>";
+            echo" <div class='btn-container'>
+    <form action='home.php' method='POST'>
+    <button class='back-button' type='submit'>Back to home</button>
+    </form></div>";
         }else{
             echo"<div class='container'>";
            // echo "<form action='wishlist.php' method='POST'>";
