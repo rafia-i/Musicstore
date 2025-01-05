@@ -200,7 +200,7 @@ require_once('DBconnect.php');
 
 .report-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 20px;   
             right: 20px;
             background-color: #ff9800;
             color: white;
@@ -216,6 +216,77 @@ require_once('DBconnect.php');
         .report-btn:hover {
             background-color: #e68900;
         }
+        /* New Releases Button */
+    /* Recently Released Button */
+/* Recently Released Button */
+/* Recently Released Button */
+.new-releases {
+    background: linear-gradient(135deg, #f9a825, #ff6f00); /* Vibrant orange gradient */
+    color: white;
+    padding: 20px;
+    border-radius: 20px; /* Softer, rounder corners */
+    position: absolute;
+    top: 300px; /* Increased to move the button lower */
+    left: 20px; /* Same left alignment as 'Upcoming Releases' */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 220px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.new-releases:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.new-releases a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.new-releases h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+
+
+    /* Buy with Points Button */
+.buy.with.points {
+    background: linear-gradient(135deg, #76c7c0, #34a0a4); /* Cool teal gradient */
+    color: white;
+    padding: 20px;
+    border-radius: 20px; /* Softer, rounder corners */
+    text-align: center;
+    width: 300px;
+    margin: 20px auto; /* Center the button in the container */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Pointer cursor for interactivity */
+}
+
+.buy.with.points:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.buy.with.points a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.buy.with.points h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
 /* Modal Box */
 .modal {
             display: none;
@@ -310,10 +381,11 @@ require_once('DBconnect.php');
     
     <a href="favourite-artists.php">My Favorite Artists </a>
     <a href="viewwishlist.php">My Wishlist </a>
-    <a href="viewcart.php">View my cart </a>
+    <a href="viewcart.php">View my cart </a>    
     <a href="bought.php">My Purchased Tracks </a>
     <a href="#">My Playlist </a>
-    <a href="past-invoices.php">My Orders </a>   
+    <a href="past-invoices.php">My Orders </a>  
+    <a href="updateCustomer.php">Change Info </a>   
     <a href="logout.php" class="logout">Logout<span class="emoji">⛔</span></a>
 </nav>
 
@@ -331,6 +403,16 @@ require_once('DBconnect.php');
         </a>
     </div>
 </div>
+
+<div class="container">
+    <!-- New Releases Section -->
+    <div class="section new-releases">
+        <a href="newRelease.php">
+            <h2>🔥 Recently Released 😲</h2>
+        </a>
+    </div>
+</div>
+
 
 <div class="container">
     <div class="section search-bar">
@@ -422,6 +504,15 @@ require_once('DBconnect.php');
     </div>
 </div>
 
+<div class="container">
+    <!-- Points -->
+    <div class="buy with points">
+        <a href="points.php">
+            <h2>Save Money with Points</h2>
+        </a>
+    </div>
+</div>
+
 <!--SHREYA-->
 
 <!-- Floating Report Button -->
@@ -480,3 +571,5 @@ require_once('DBconnect.php');
 
 </body>
 </html>
+
+
