@@ -123,8 +123,7 @@
 require_once('DBconnect.php');
 if(isset($_POST['search_term'])) {
     $u = $_POST['search_term'];
-
-    $sql = "SELECT t.name AS trackName, t.link AS trackLink, t.trackID AS trackID, a.name AS artistName FROM tracks t JOIN artist a ON t.artistID = a.artistID WHERE t.name LIKE '%$u%' ORDER BY t.name";
+    $sql = "SELECT t.name AS trackName, t.link AS trackLink, t.trackID AS trackID, t.price AS trackPrice, a.name AS artistName FROM tracks t JOIN artist a ON t.artistID = a.artistID WHERE t.name LIKE '%$u%' ORDER BY t.name";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) != 0) {
@@ -135,14 +134,11 @@ if(isset($_POST['search_term'])) {
             $artistName = htmlspecialchars($row['artistName'], ENT_QUOTES, 'UTF-8');
             $ytLink = htmlspecialchars($row['trackLink'], ENT_QUOTES, 'UTF-8');
             $trackID = htmlspecialchars($row['trackID'], ENT_QUOTES, 'UTF-8');
+            $trackPrice = htmlspecialchars($row['trackPrice'], ENT_QUOTES, 'UTF-8');
             
             echo "<li>";
-            echo "<h3> $trackName by $artistName - <a href='$ytLink' target='_blank'>Watch preview</a><br> </h3>";
-
-           /// echo "<form action='confirming.php' method='POST'>
-              ///      <input type='hidden' name='trackID' value='$trackID'>
-               ///     <button type='submit'>Add to your playlist</button>
-              ///  </form>";
+            echo "<h3> $trackName by $artistName - <a href='$ytLink' target='_blank'>Watch preview</a></h3>";
+            echo "<p>Price: BDT $trackPrice</p>";
 
             echo "<form action='cart.php' method='POST'>
                     <input type='hidden' name='trackID' value='$trackID'>
@@ -163,6 +159,7 @@ if(isset($_POST['search_term'])) {
             <button class="back-button" type="submit">Back to home</button>
         </form>
 </div>
+
 
 </div>
 </body>
