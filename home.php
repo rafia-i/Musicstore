@@ -197,27 +197,7 @@ require_once('DBconnect.php');
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        /*
-        nav {
-             display: flex;  
-            
-             justify-content: space-around; 
-             padding: 10px;
-             background-color: #f4f4f4;  
-}
-nav a {
-    display: inline-block;
-    padding: 20px 40px;  
-    text-decoration: none;
-    color: white;
-    background-color:rgb(17, 123, 45); 
-    border-radius: 5px; 
-    font-family: Arial, sans-serif; 
-    font-size: 1rem; 
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;  
-}*/
-/* Floating Report Button */
+
 .report-btn {
             position: fixed;
             bottom: 20px;
@@ -289,20 +269,7 @@ nav a {
 
 
         
-       /*
-        .playlist ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .playlist ul li {
-            padding: 0.8rem;
-            background-color: #f9f9f9;
-            margin-bottom: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-       */ 
+    
     </style>
 </head>
 
@@ -444,16 +411,6 @@ nav a {
             <button type="submit">Discover Popular Artists</button>
         </form>
     </div>
-
-</div>
-<!--YAKUB-->
-<div class="container">
-    <div class="section popular-list">
-        <h2>🔥 Don't miss out on the trending artists and their chart-topping tracks. Click below to explore now!</h2>
-        <form action="popular-artists.php" method="GET">
-            <button type="submit">Discover Popular Artists</button>
-        </form>
-    </div>
 </div>
 
 <div class="container">
@@ -492,14 +449,7 @@ nav a {
     }
 </script>
 
-<div class="container">
-    <div class="section popular-list">
-        <h2>Top Hits You Can't Ignore – Check Them Out Now! 🎧</h2>
-        <form action="popular-tracks.php" method="GET">
-            <button type="submit">View Most Popular Tracks</button>
-        </form>
-    </div>
-</div>
+
 
 <!--SHREYA-->
 

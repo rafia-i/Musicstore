@@ -28,6 +28,10 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
         //
         $customer_id = mysqli_insert_id($conn);
         $_SESSION['ID'] = $customer_id;
+        //insert into session
+        $sql3="INSERT INTO session(`sessionID`, `customerID`) 
+        VALUES ('','$customer_id')";
+        $result3 = mysqli_query($conn, $sql3);
 
         
         
