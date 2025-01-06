@@ -1,24 +1,24 @@
 <?php
-// Database configuration
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "musicstore";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Capture form data
+    
     $name = $_POST['name'];
     $type = $_POST['type'];
 
-    // Insert data into the database
+    // Insert 
     $sql = "INSERT INTO artist (name, type) VALUES ('$name', '$type')";
 
     if ($conn->query($sql) === TRUE) {

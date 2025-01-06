@@ -9,7 +9,7 @@ require_once('DBconnect.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['trackIDs'], $_POST['paymentMethod'])) {
         $trackIDs = $_POST['trackIDs']; // Comma-separated track IDs
-        $paymentMethod = $_POST['paymentMethod']; // Selected payment method
+        $paymentMethod = $_POST['paymentMethod']; 
     } else {
         echo "Missing data. Please try again.";
         exit;

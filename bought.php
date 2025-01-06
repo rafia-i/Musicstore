@@ -184,7 +184,7 @@ $result = mysqli_query($conn, $sql);
         <ul class="track-list">
             <?php
             if (mysqli_num_rows($result) > 0) {
-                // Loop through the result and display track names
+               
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<li>";
                     echo "<div class='track-info'>";

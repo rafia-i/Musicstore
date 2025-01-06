@@ -21,7 +21,7 @@ if (isset($_SESSION['ID'])) {
             padding: 20px;
             height: 100vh;
             
-    margin: 20px; /* or any other appropriate value */
+            margin: 20px; 
 
         }
         .container {
@@ -35,18 +35,18 @@ if (isset($_SESSION['ID'])) {
             text-align: center;
         }
         .viewcart-btn {
-    background-color:rgb(10, 125, 44); /* Primary color */
-    color: #fff; /* White text */
-    border: none; /* Remove borders */
-    padding: 10px 20px; /* Button padding */
-    font-size: 16px; /* Font size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    background-color:rgb(10, 125, 44); 
+    color: #fff; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 16px;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
 .viewcart-btn:hover {
-    background-color:rgb(6, 82, 29); /* Darker shade on hover */
+    background-color:rgb(6, 82, 29); 
 }
 
 
