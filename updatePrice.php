@@ -5,14 +5,14 @@ if (isset($_POST['prices']) && isset($_POST['name'])) {
     $prices = $_POST['prices'];
     $name = $_POST['name'];
 
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("UPDATE tracks SET price = ? WHERE name = ?");
-    $stmt->bind_param("ds", $prices, $name); // "d" for double (price), "s" for string (name)
+   
+    $stmt = $conn->prepare("UPDATE tracks SET price = '$prices' WHERE name = '$name'");
+    
 
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
             header("Location: Home-admin.php");
-            exit(); // Important: Stop further execution after redirect
+            exit(); 
         } else {
             $error_message = "No track found with that name.";
         }
@@ -46,7 +46,7 @@ if (isset($_POST['prices']) && isset($_POST['name'])) {
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 300px; /* Adjust as needed */
+            width: 300px;
         }
 
         label {
@@ -56,7 +56,7 @@ if (isset($_POST['prices']) && isset($_POST['name'])) {
 
         input[type="text"],
         input[type="number"] {
-            width: calc(100% - 12px); /* Account for padding */
+            width: calc(100% - 12px); 
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -96,7 +96,7 @@ if (isset($_POST['prices']) && isset($_POST['name'])) {
 
             <input type="submit" value="Update Price">
             <?php
-            if (isset($error_message)) { //Display error message if set in PHP
+            if (isset($error_message)) { 
                 echo '<div class="error-message">' . $error_message . '</div>';
             }
             ?>
