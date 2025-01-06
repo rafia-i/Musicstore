@@ -6,8 +6,8 @@ if (isset($_SESSION['ID'])) {
 require_once('DBconnect.php');
 
 if (isset($_POST['trackID']) && isset($_POST['password'])) {
-    $trackID = mysqli_real_escape_string($conn, $_POST['trackID']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $trackID = ($_POST['trackID']);
+    $password = ($_POST['password']);
     $sql3 = "SELECT * FROM playlist WHERE trackID = '$trackID' AND customerID = '$ID'";
     $result3 = mysqli_query($conn, $sql3);
     echo '<form action="home.php" method="POST"><button type="submit">Back to Home</button></form><br>';

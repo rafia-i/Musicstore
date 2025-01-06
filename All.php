@@ -74,6 +74,20 @@ function displayTransactions($result, $title) {
             font-size: 1rem;
             color: #555;
         }
+        .back-button {
+        background-color: #4CAF50; 
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        }
+        .back-button:hover {
+        background-color: #45a049; 
+        }
     </style>
 </head>
 <body>
@@ -81,5 +95,9 @@ function displayTransactions($result, $title) {
     <?php
         displayTransactions($result, "Transactions in the Last Month");
     ?>
+    <div class='btn-container'>
+    <form action='Home-admin.php' method='POST'>
+    <button class='back-button' type='submit'>Back to home</button>
+    </form></div>
 </body>
 </html>
