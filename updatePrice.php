@@ -11,7 +11,7 @@ if (isset($_POST['prices']) && isset($_POST['name'])) {
 
     if ($stmt->execute()) {
         if ($stmt->affected_rows > 0) {
-            header("Location: home.php");
+            header("Location: Home-admin.php");
             exit(); // Important: Stop further execution after redirect
         } else {
             $error_message = "No track found with that name.";
