@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO artist (name, type) VALUES ('$name', '$type')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New artist added successfully!";
+        header("Location: Home-admin.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -105,3 +105,5 @@ $conn->close();
     </div>
 </body>
 </html>
+
+

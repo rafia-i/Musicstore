@@ -1,20 +1,17 @@
 <?php
+session_start();
+require_once('DBconnect.php');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "musicstore";
-
-
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+    // Capture form data
     $name = $_POST['name'];
     $mediatype = $_POST['mediatype'];
     $genreID = $_POST['genreID'];
@@ -26,12 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $link = $_POST['link'];
     $audio_path = $_POST['audio_path'];
 
-    
+    // Insert data into the database
     $sql = "INSERT INTO tracks (name, mediatype, genreID, artistID, length, price, size, composed_date, link, audio_path) 
             VALUES ('$name', '$mediatype', '$genreID', '$artistID', '$length', '$price', '$size', '$composed_date', '$link', '$audio_path')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New track added successfully!";
+        header("Location: Home-admin.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
