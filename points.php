@@ -5,7 +5,7 @@ if (isset($_SESSION['ID'])) {
 }
 require_once('DBconnect.php');
 
-// Fetch tracks
+
 $sql = "SELECT trackID, name, price FROM tracks";
 $result = $conn->query($sql);
 $tracks = [];
@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
 
 // Handle purchase request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ID'])) {
-    $userId = $_POST['ID']; // Replace with logged-in user ID
+    $userId = $_POST['ID']; 
     $trackId = (int)$_POST['track_id'];
 
     // Fetch user points

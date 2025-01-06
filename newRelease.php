@@ -1,9 +1,9 @@
 <?php
-// Database connection
+
 $host = 'localhost';
 $user = 'root';
-$password = ''; // Update with your password
-$database = 'musicstore'; // Update if the database name differs
+$password = ''; 
+$database = 'musicstore'; 
 
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {

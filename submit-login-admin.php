@@ -1,6 +1,6 @@
 <!--Shreya-->
 <?php
-session_start(); // Start session at the beginning of the script
+session_start(); 
 require_once('DBconnect.php');
 if(isset($_POST['adminID']) && isset($_POST['password'])) {
     $u=$_POST['adminID'];

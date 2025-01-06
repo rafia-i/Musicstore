@@ -43,10 +43,10 @@ require_once('DBconnect.php');
             background-color: transparent;
             color: #4CAF50;
             border: 3px solid #4CAF50;
-            border-radius: 50%; /* Makes the button circular */
+            border-radius: 50%; 
             font-size: 0.1 rem;
             text-align: center;
-            line-height: 50px; /* Centers the text vertically */
+            line-height: 50px; 
             cursor: pointer;
         }
 
@@ -55,7 +55,7 @@ require_once('DBconnect.php');
             color: white;
         }
 
-        /* Menu Bar */
+       
         nav {
             display: flex;
             justify-content: space-around;
@@ -74,7 +74,7 @@ require_once('DBconnect.php');
             background-color: #45a049;
         }
 
-        /* Main Content */
+        
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -87,7 +87,7 @@ require_once('DBconnect.php');
        
         
         .section {
-            /*background-color: #dff5e8;*/
+           
             background: linear-gradient(135deg, #dff5e8,rgb(195, 242, 215));
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
@@ -97,7 +97,7 @@ require_once('DBconnect.php');
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .section:hover {
-            transform: scale(1.05); /* Slightly enlarge on hover */
+            transform: scale(1.05); 
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -135,25 +135,25 @@ require_once('DBconnect.php');
         
 
         .upcoming-releases {
-        background: linear-gradient(135deg, #a8e063, #56ab2f); /* Soft green gradient */
+        background: linear-gradient(135deg, #a8e063, #56ab2f);
         color: white;
         padding: 20px;
-        border-radius: 20px; /* Softer, rounder corners */
+        border-radius: 20px; 
         position: absolute;
-        top: 150px; /* Adjust as needed */
-        left: 20px; /* Distance from the right edge */
+        top: 150px; 
+        left: 20px; 
         box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
         text-align: center;
         width: 220px;
-        /*font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
+       
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         margin-top: 30px;
         
     }
 
     .upcoming-releases:hover {
-        transform: scale(1.05); /* Slightly enlarge on hover */
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+        transform: scale(1.05); 
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
     }
 
     .upcoming-releases a {
@@ -216,18 +216,15 @@ require_once('DBconnect.php');
         .report-btn:hover {
             background-color: #e68900;
         }
-        /* New Releases Button */
-    /* Recently Released Button */
-/* Recently Released Button */
-/* Recently Released Button */
+        
 .new-releases {
-    background: linear-gradient(135deg, #f9a825, #ff6f00); /* Vibrant orange gradient */
+    background: linear-gradient(135deg, #f9a825, #ff6f00); 
     color: white;
     padding: 20px;
-    border-radius: 20px; /* Softer, rounder corners */
+    border-radius: 20px; 
     position: absolute;
-    top: 300px; /* Increased to move the button lower */
-    left: 20px; /* Same left alignment as 'Upcoming Releases' */
+    top: 300px; 
+    left: 20px; 
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 220px;
@@ -236,8 +233,8 @@ require_once('DBconnect.php');
 }
 
 .new-releases:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    transform: scale(1.05); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
 }
 
 .new-releases a {
@@ -255,23 +252,22 @@ require_once('DBconnect.php');
 
 
 
-    /* Buy with Points Button */
+   
 .buy.with.points {
-    background: linear-gradient(135deg, #76c7c0, #34a0a4); /* Cool teal gradient */
+    background: linear-gradient(135deg, #76c7c0, #34a0a4); 
     color: white;
     padding: 20px;
-    border-radius: 20px; /* Softer, rounder corners */
-    text-align: center;
+    border-radius: 20px; 
     width: 300px;
-    margin: 20px auto; /* Center the button in the container */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin: 20px auto; 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* Pointer cursor for interactivity */
+    cursor: pointer; 
 }
 
 .buy.with.points:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    transform: scale(1.1); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
 }
 
 .buy.with.points a {
