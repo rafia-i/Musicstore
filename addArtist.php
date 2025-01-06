@@ -1,24 +1,21 @@
 <?php
+session_start();
+require_once('DBconnect.php');
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "musicstore";
-
-
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+    // Capture form data
     $name = $_POST['name'];
     $type = $_POST['type'];
 
-    // Insert 
+    // Insert data into the database
     $sql = "INSERT INTO artist (name, type) VALUES ('$name', '$type')";
 
     if ($conn->query($sql) === TRUE) {
@@ -96,7 +93,12 @@ $conn->close();
             <input type="text" id="name" name="name" required>
 
             <label for="type">Type:</label>
-            <input type="text" id="type" name="type" required>
+            <select id="type" name="type" required>
+                <option value="Bangla">Bangla</option>
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Others">Others</option>
+            </select><br><br>
 
             <button type="submit">Add Artist</button>
         </form>
