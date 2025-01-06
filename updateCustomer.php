@@ -14,18 +14,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Update customer information
     $name = $conn->real_escape_string($_POST['name']);
     $email = $conn->real_escape_string($_POST['email']);
+    $phone = $conn->real_escape_string($_POST['phone']);
 
-    $updateSql = "UPDATE customer SET name = '$name', email = '$email' WHERE id = $customerId";
+    $updateSql = "UPDATE customer SET name = '$name', email = '$email', phone = '$phone' WHERE id = $customerId";
 
     if ($conn->query($updateSql)) {
-        $message = "Customer information updated successfully!";
+        header("Location: home.php");
     } else {
         $message = "Error updating customer information: " . $conn->error;
     }
 }
 
 // Fetch customer details after update
-$sql = "SELECT id, name, email FROM customer WHERE id = $customerId";
+$sql = "SELECT id, name, email, phone FROM customer WHERE id = $customerId";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $customer = $result->fetch_assoc();
@@ -103,6 +104,10 @@ if ($result->num_rows > 0) {
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($customer['email']); ?>" required>
+
+            <label for="phone">Phone:</label>
+            <input type="phone" id="phone" name="phone" value="<?php echo htmlspecialchars($customer['phone']); ?>" required>
+
 
             <button type="submit">Update</button>
         </form>
